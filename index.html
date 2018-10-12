@@ -1,16 +1,12 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-
-  <!-- Vue CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
+    <!-- Vue CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
      <!-- Axios CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
@@ -18,13 +14,32 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/profile.css" />
+
+    <!-- Fonts from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,800" rel="stylesheet" type="text/css">
+
     <title>Bounty Hunter</title>
   </head>
   <body>
     <div id="app">
       <nav-bar :host="host" @trigger-getdatauser="getUserData" @trigger-logout="resetCurrentUser" :user="currentUser"></nav-bar>
-      <list-bounty></list-bounty>
-      <g:plus action="share" class="card-link" href="https://storage.googleapis.com/bountyhunter/1539269853811adult-beard-boy-220453.jpg"></g:plus>
+
+      <!-- Content -->
+      <div class="container">
+        <div class="row">
+          <div class="col-3">
+            <user-profile :currentuser="currentUser"></user-profile>
+          </div>
+          <div class="col-1"></div>
+          <div class="col-8">
+            <list-bounty></list-bounty>
+            <!-- <g:plus action="share" class="card-link" href="https://storage.googleapis.com/bountyhunter/1539269853811adult-beard-boy-220453.jpg"></g:plus> -->
+          </div>
+        </div>
+      </div>
+      
       <!-- Modal -->
 
 
@@ -43,9 +58,7 @@
         }(document, 'script', 'facebook-jssdk'));
     </script>
 
-<script src="https://apis.google.com/js/platform.js" async defer> </script>
-
-     
+    <script src="https://apis.google.com/js/platform.js" async defer> </script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -54,22 +67,9 @@
 
     <!-- Vue Component (child) -->
     <script src="./assets/js/components/navbar.js"></script>
-    <script src="./assets/js/components/list.js"></script>
+    <script src="./assets/js/components/profile.js"></script>
 
-  </div>
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
-
-  <!-- Vue Component (child) -->
-  <script src="./assets/js/components/navbar.js"></script>
-
-  <!-- Vue (parent) -->
-  <script src="./assets/js/page/home.js"></script>
-</body>
-
+    <!-- Vue (parent) -->
+    <script src="./assets/js/page/home.js"></script>
+  </body>
 </html>
