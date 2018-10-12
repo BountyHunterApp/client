@@ -26,8 +26,8 @@ Vue.component('list-bounty', {
     template: `
     <div class="container-fluid">
         <div class="row">
-        <div class="card col-md-3 col-sm-4 col-12 mr-3 mt-3 "  style="width: 15rem; text-align: center" v-for="list in allList">
-            <img class="card-img-top" :src="list.avatar"
+        <div class="card col-md-4 col-sm-4 col-12 mt-3 "  style="width: 15rem; text-align: center" v-for="list in allList">
+            <img class="card-img-top mt-4" :src="list.avatar"
                 alt="Card image cap" style="height: 300px; width: 300px; margin: 0 auto">
             <div class="card-body">
                 <h3 class="card-title">{{list.name}}</h3>

@@ -30,16 +30,21 @@
       <nav-bar :host="host" @trigger-getdatauser="getUserData" @trigger-logout="resetCurrentUser" :user="currentUser"></nav-bar>
 
       <!-- Content -->
-      <div class="container">
+      <div class="container-fluid">
         <div class="row">
-          <div class="col-3">
+          <div class="col-1"></div>
+          <div class="col-3 mt-3" v-if='currentUser'>
             <user-profile :host="host" :currentuser="currentUser"></user-profile>
           </div>
-          <div class="col-1"></div>
-          <div class="col-8">
+          <div class="col-7" v-if='currentUser'>
             <list-bounty></list-bounty>
             <!-- <g:plus action="share" class="card-link" href="https://storage.googleapis.com/bountyhunter/1539269853811adult-beard-boy-220453.jpg"></g:plus> -->
           </div>
+          <div class="col-10" v-else>
+            <list-bounty></list-bounty>
+            <!-- <g:plus action="share" class="card-link" href="https://storage.googleapis.com/bountyhunter/1539269853811adult-beard-boy-220453.jpg"></g:plus> -->
+          </div>
+          <div class="col-1"></div>
         </div>
       </div>
       
@@ -71,6 +76,7 @@
     <!-- Vue Component (child) -->
     <script src="./assets/js/components/navbar.js"></script>
     <script src="./assets/js/components/profile.js"></script>
+    <script src="./assets/js/components/list.js"></script>
 
     <!-- Vue (parent) -->
     <script src="./assets/js/page/home.js"></script>
