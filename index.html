@@ -37,7 +37,7 @@
             <user-profile :host="host" :currentuser="currentUser" @resetlist='resetlist'></user-profile>
           </div>
           <div class="col-7" v-if='currentUser'>
-            <list-bounty :needreset="needreset"></list-bounty>
+            <list-bounty :needreset="needreset" :currentuser="currentUser"></list-bounty>
             <!-- <g:plus action="share" class="card-link" href="https://storage.googleapis.com/bountyhunter/1539269853811adult-beard-boy-220453.jpg"></g:plus> -->
           </div>
           <div class="col-10" v-else>

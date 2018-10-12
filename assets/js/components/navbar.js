@@ -77,12 +77,6 @@ Vue.component('nav-bar', {
         <li class="nav-item active">
           <a class="nav-link" href="#">List <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Your list</a>
-        </li>
       </ul>
       <div class="form-inline my-2 my-lg-0" v-if="!user">
 
