@@ -35,7 +35,6 @@
     height: 280px;
     width: 280px;
     border-radius: 50%;
-    background: url(http://goltermann.design/wp-content/themes/goltermann/images/jaschagoltermann.png) 0 -30px;
     background-size: 100%;
     overflow: hidden;
     transition: all ease 0.3s;
@@ -43,10 +42,12 @@
 #profile-wrap:hover .profile-image {
     background-position: 0 -29px;
     border-radius: 0;
-    margin-top: -15px;
-    height: 460px;
-    width: 320px;
-    z-index: 1;
+    margin-top: 0;
+    height: 600px;
+    width: 600px;
+    background-size: 600px;
+    background-repeat: no-repeat;
+    z-index: 4;
 }
 #profile-wrap:hover .profile-name h2 {
     font-size: 36px;
@@ -105,7 +106,7 @@
     display: inline-block;
     margin: 0;
 }
-.profile-social ul li a {
+.profile-social ul li button {
     width: 40px;
     height: 40px;
     display: block;
@@ -117,9 +118,10 @@
     font-size: 20px;
     background: #303030;
     color: white;
+    outline: none
 }
-.profile-social ul li a:hover {
-    background: #7b1733;
+.profile-social ul li button:hover {
+    background: #28a745;
 }
 
 .pulse1 {
