@@ -1,43 +1,60 @@
-Vue.component('list-bounty', {
-    data: function () {
-        return {
-            allList: []
-        }
+Vue.component("list-bounty", {
+  data: function () {
+    return {
+      allList: [],
+      detailBounty: {}
+    };
+  },
+  props: ["needreset"],
+  methods: {
+    getDetail(id) {
+      console.log('masuk')
+      axios({
+          url: `http://localhost:3000/bounty/detail/${id}`,
+          method: "GET",
+          headers: {
+            token: localStorage.getItem("token")
+          }
+        })
+        .then(data => {
+          this.detailBounty = data.data.data
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
-    props: ['needreset'],
-    methods: {
-        getData() {
-            axios({
-                method: 'GET',
-                url: 'http://localhost:3000/bounty'
-            })
-            .then((result) => {
-                if (result.data) {
-                    this.allList = result.data.data
-                } else {
-                    console.log('no bounty data');
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-        }
-    },
-    created() {
-        this.getData()
-    },
-    watch: {
-        needreset() {
-            if (this.needreset) {
-                console.log('reset data')
-                this.getData()
-            }
-        }
-    },
-    template: `
+    getData() {
+      axios({
+          method: "GET",
+          url: "http://localhost:3000/bounty"
+        })
+        .then(result => {
+          if (result.data) {
+            this.allList = result.data.data;
+          } else {
+            console.log("no bounty data");
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  },
+  created() {
+    this.getData();
+  },
+  watch: {
+    needreset() {
+      if (this.needreset) {
+        console.log("reset data");
+        this.getData();
+      }
+    }
+  },
+  template: `
     <div class="container-fluid">
         <div class="row">
-        <div class="card col-md-4 col-sm-4 col-12 mt-3 "  style="width: 15rem; text-align: center" v-for="list in allList">
+        <div class="card col-md-4 col-sm-4 col-12 mt-3 "  style="width: 15rem; text-align: center" v-for="list in allList" v-on:click="getDetail(list._id)" data-toggle="modal" data-target="#detailModal">
             <img class="card-img-top mt-4" :src="list.avatar"
                 alt="Card image cap" style="height: 300px; width: 300px; margin: 0 auto">
             <div class="card-body">
@@ -61,5 +78,40 @@ Vue.component('list-bounty', {
             </div>
         </div>
         </div>
+        <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Detail Bounty</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h5>Photo: </h5>
+            <img :src="detailBounty.avatar"></img>
+            <h5> Name: </h5>
+            <h3>{{detailBounty.name}}</h3>
+            <h5> Age: </h5>
+            <h4> {{detailBounty.age}} </h4>
+            <h5> Hair color: </h5>
+            <h4> {{detailBounty.hairColor}} </h4>
+            <h5> Detail: </h5>
+            <h4> {{detailBounty.detail}} </h4>
+            <h5> Last seen: </h5>
+            <h4> {{detailBounty.lastseen}} </h4>
+            <h5> Bounty Price: </h5>
+            <h4> $ {{detailBounty.bountyPrice}} Usd</h4>
+            <h5> Contact Info: </h5>
+            <h4> {{detailBounty.contactInfo}} </h4>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Dismiss</button>
+          </div>
+        </div>
+      </div>
+    </div>
+      
     </div>`
-})
+});
