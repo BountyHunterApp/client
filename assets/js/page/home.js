@@ -4,11 +4,11 @@ var app = new Vue({
     host: 'http://localhost:3000',
     currentUser: null
   },
-  created () {
+  created() {
     let token = localStorage.getItem('token')
 
-    if(token) {
-      this.getUserData()  
+    if (token) {
+      this.getUserData()
     }
   },
   methods: {
@@ -17,12 +17,12 @@ var app = new Vue({
     },
     getUserData() {
       axios({
-        url: `${this.host}/users`,
-        method: 'GET',
-        headers: {
-          token: localStorage.getItem('token')
-        }
-      })
+          url: `${this.host}/users`,
+          method: 'GET',
+          headers: {
+            token: localStorage.getItem('token')
+          }
+        })
         .then(data => {
           this.currentUser = data.data.data
         })

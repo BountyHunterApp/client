@@ -6,41 +6,50 @@ Vue.component('nav-bar', {
 
       registFormName: '',
       registFormEmail: '',
-      registFormPassword: ''
+      registFormPassword: '',
+      registFormAvatar: ''
+
     }
   },
-  props: ['host', 'user'],
+  props: ['host', 'user', 'fileAvatarRegist'],
   methods: {
-    register () {
-      axios({
-        url: `${this.host}/register`,
-        method: 'POST',
-        data: {
-          name: this.registFormName,
-          email: this.registFormEmail,
-          password: this.registFormPassword
-        }
-      })
+    register() {
+      console.log(this.registFormAvatar)
+
+      let formData = new FormData()
+
+      formData.append('image', this.registFormAvatar)
+      formData.append('name', this.registFormName)
+      formData.append('email', this.registFormEmail)
+      formData.append('password', this.registFormPassword)
+
+      console.log(formData)
+      axios.post(`${this.host}/register`, formData)
         .then(data => {
           this.formLoginEmail = this.registFormEmail
           this.formLoginPassword = this.registFormPassword
-          this.registFormName = '',
+          this.registFormName = ''
           this.registFormEmail = ''
           this.registFormPassword = ''
+          this.registFormAvatar = ''
+          console.log(data.data)
         })
         .catch(err => {
           console.log(err)
         })
     },
+    onFileChange(event) {
+      this.registFormAvatar = event.target.files[0]
+    },
     login() {
       axios({
-        url: `${this.host}/login`,
-        method: 'POST',
-        data: {
-          email: this.formLoginEmail,
-          password: this.formLoginPassword
-        }
-      })
+          url: `${this.host}/login`,
+          method: 'POST',
+          data: {
+            email: this.formLoginEmail,
+            password: this.formLoginPassword
+          }
+        })
         .then(data => {
           localStorage.setItem('token', data.data.token)
           this.formLoginEmail = ''
@@ -76,8 +85,8 @@ Vue.component('nav-bar', {
         </li>
       </ul>
       <div class="form-inline my-2 my-lg-0" v-if="!user">
-        <input class="form-control mr-sm-2" type="search" placeholder="Email" aria-label="Search" v-model="formLoginEmail">
-        <input class="form-control mr-sm-2" type="search" placeholder="Password" aria-label="Search" v-model="formLoginPassword">
+        <input class="form-control mr-sm-2" type="text" placeholder="Email" aria-label="Search" v-model="formLoginEmail">
+        <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="Search" v-model="formLoginPassword">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-right: 10px;" v-on:click="login">Login</button>
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"  data-toggle="modal" data-target="#exampleModal">Register</button>
       </div>
@@ -94,6 +103,10 @@ Vue.component('nav-bar', {
             </button>
           </div>
           <div class="modal-body">
+            <div class="form-group">
+              <label for="exampleFormControlFile1">Avatar</label>
+              <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" v-on:change = "onFileChange">
+            </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Name</label>
               <input type="email" class="form-control" id="exampleInputName1" aria-describedby="nameHelp" placeholder="Full name" v-model="registFormName">
