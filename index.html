@@ -34,10 +34,10 @@
         <div class="row">
           <div class="col-1"></div>
           <div class="col-3 mt-3" v-if='currentUser'>
-            <user-profile :host="host" :currentuser="currentUser"></user-profile>
+            <user-profile :host="host" :currentuser="currentUser" @resetlist='resetlist'></user-profile>
           </div>
           <div class="col-7" v-if='currentUser'>
-            <list-bounty></list-bounty>
+            <list-bounty :needreset="needreset"></list-bounty>
             <!-- <g:plus action="share" class="card-link" href="https://storage.googleapis.com/bountyhunter/1539269853811adult-beard-boy-220453.jpg"></g:plus> -->
           </div>
           <div class="col-10" v-else>
