@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Vue CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+     <!-- Axios CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/profile.css" />
+
+    <!-- Fonts from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,800" rel="stylesheet" type="text/css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <title>Bounty Hunter</title>
+  </head>
+  <body>
+    <div id="app">
+      <nav-bar :host="host" @trigger-getdatauser="getUserData" @trigger-logout="resetCurrentUser" :user="currentUser"></nav-bar>
+
+      <!-- Content -->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="col-3 mt-3" v-if='currentUser'>
+            <user-profile :host="host" :currentuser="currentUser" @resetlist='resetlist'></user-profile>
+          </div>
+          <div class="col-7" v-if='currentUser'>
+            <list-bounty :needreset="needreset" :currentuser="currentUser"></list-bounty>
+            <!-- <g:plus action="share" class="card-link" href="https://storage.googleapis.com/bountyhunter/1539269853811adult-beard-boy-220453.jpg"></g:plus> -->
+          </div>
+          <div class="col-10" v-else>
+            <list-bounty></list-bounty>
+            <!-- <g:plus action="share" class="card-link" href="https://storage.googleapis.com/bountyhunter/1539269853811adult-beard-boy-220453.jpg"></g:plus> -->
+          </div>
+          <div class="col-1"></div>
+        </div>
+      </div>
+      
+      <!-- Modal -->
+
+
+    </div>
+
+    <!-- FB button -->
+
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <script src="https://apis.google.com/js/platform.js" async defer> </script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <!-- Vue Component (child) -->
+    <script src="./assets/js/components/navbar.js"></script>
+    <script src="./assets/js/components/profile.js"></script>
+    <script src="./assets/js/components/list.js"></script>
+
+    <!-- Vue (parent) -->
+    <script src="./assets/js/page/home.js"></script>
+  </body>
+</html>
