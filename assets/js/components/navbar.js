@@ -85,7 +85,8 @@ Vue.component('nav-bar', {
         </li>
       </ul>
       <div class="form-inline my-2 my-lg-0" v-if="!user">
-        <input class="form-control mr-sm-2" type="text" placeholder="Email" aria-label="Search" v-model="formLoginEmail">
+
+        <input class="form-control mr-sm-2" type="email" placeholder="Email" aria-label="Search" v-model="formLoginEmail">
         <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="Search" v-model="formLoginPassword">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-right: 10px;" v-on:click="login">Login</button>
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"  data-toggle="modal" data-target="#exampleModal">Register</button>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <!-- facebook -->
+    <div>
+        <!-- Load Facebook SDK for JavaScript -->
+        <div id="fb-root"></div>
+        <script>
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3" style="border:1px solid black; min-height: 800px;">col-sm-4</div>
+            <div class="col-sm-1" style="border:1px solid black; min-height: 800px;">col-sm-1</div>
+            <div class="col-sm-8" style="border:1px solid black; min-height: 800px;">col-sm-7
+
+                <div class="card" style="width: 15rem;" v-for="allList">
+                    <img class="card-img-top" style="text-align: center " src="https://storage.googleapis.com/bountyhunter/1539269853811adult-beard-boy-220453.jpg"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <h3 class="card-title">name</h5>
+                            <h5 class="card-title">Gender
+                        </h3>
+                        <h5 class="card-title">Age</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <g:plus action="share" class="card-link" href="https://storage.googleapis.com/bountyhunter/1539269853811adult-beard-boy-220453.jpg"></g:plus>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="fb-share-button card-link" data-href="https://storage.googleapis.com/bountyhunter/1539269853811adult-beard-boy-220453.jpg"
+                                    data-layout="button_count"></div>
+                            </div>
+                            <div class="col-sm-4"><a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Help us to find someone https://storage.googleapis.com/bountyhunter/1539269853811adult-beard-boy-220453.jpg"
+                                    data-size="large">Tweet</a></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer> </script>
+
+</body>
+
+</html>
