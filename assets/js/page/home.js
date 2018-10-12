@@ -2,7 +2,8 @@ var app = new Vue({
   el: '#app',
   data: {
     host: 'http://localhost:3000',
-    currentUser: null
+    currentUser: null,
+    needreset: false
   },
   created() {
     let token = localStorage.getItem('token')
@@ -29,6 +30,12 @@ var app = new Vue({
         .catch(err => {
           console.log(err)
         })
+    },
+    resetlist() {
+      this.needreset = true
+      setTimeout(() => {
+        this.needreset = false
+      }, 1000)
     }
   }
 })

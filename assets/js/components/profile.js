@@ -40,7 +40,8 @@ Vue.component('user-profile', {
                 this.bountyName = '',
                 this.bountyDetail = '',
                 this.bountyLastSeen = '',
-                this.contactInfo = ''
+                this.contactInfo = '',
+                this.$emit('resetlist')
             })
             .catch(err => {
                 console.log(JSON.stringify(err))

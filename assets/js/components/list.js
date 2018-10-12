@@ -4,12 +4,10 @@ Vue.component('list-bounty', {
             allList: []
         }
     },
-    props: [''],
+    props: ['needreset'],
     methods: {
-
-    },
-    created() {
-        axios({
+        getData() {
+            axios({
                 method: 'GET',
                 url: 'http://localhost:3000/bounty'
             })
@@ -19,9 +17,22 @@ Vue.component('list-bounty', {
                 } else {
                     console.log('no bounty data');
                 }
-            }).catch((err) => {
+            })
+            .catch((err) => {
                 console.log(err);
             });
+        }
+    },
+    created() {
+        this.getData()
+    },
+    watch: {
+        needreset() {
+            if (this.needreset) {
+                console.log('reset data')
+                this.getData()
+            }
+        }
     },
     template: `
     <div class="container-fluid">
